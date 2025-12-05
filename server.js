@@ -25,7 +25,7 @@ const rooms = {};
 
 // Handle Socket.io connections
 io.on('connection', (socket) => {
-    console.log(User connected: ${socket.id});
+    console.log(`User connected: ${socket.id}`);
 
     // --- LANDING PAGE / ROOM MANAGEMENT ---
     
@@ -151,4 +151,5 @@ io.on('connection', (socket) => {
 
 server.listen(PORT, () => {
     console.log(Server running on http://localhost:${PORT});
+
 });
