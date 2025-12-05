@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 WatchTogether</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="app">
+        <section id="landing-page" class="center-content">
+            <h1>🎬 WatchTogether</h1>
+            <p>Watch a movie in perfect sync with friends. No sign-up, no hassle.</p>
+            <div class="card">
+                <h2>Your Username</h2>
+                <input type="text" id="username-input" placeholder="Enter your name" maxlength="20" required>
+                <button id="create-room-btn">✨ Create New Room</button>
+                <hr>
+                <h2>Join Existing Room</h2>
+                <input type="text" id="room-id-input" placeholder="Enter Room ID (e.g., 123456)" maxlength="6">
+                <button id="join-room-btn">➡️ Join Room</button>
+                <p id="error-message" class="error"></p>
+            </div>
+        </section>
+
+        <section id="room-page" class="hidden">
+            <header>
+                <span id="room-id-display"></span> | <span id="current-username"></span>
+                <button id="leave-room-btn">🚪 Leave Room</button>
+            </header>
+
+            <main class="room-layout">
+                <div class="video-container">
+                    <div id="video-input-panel">
+                        <input type="text" id="video-url-input" placeholder="Paste MP4/YouTube/Aparat direct URL here...">
+                        <button id="load-video-btn">🔗 Load URL</button>
+                        <p class="note">⚠️ Note: Local file upload is complex to sync. Using direct URL is recommended for simplicity.</p>
+                    </div>
+                    
+                    <div id="player-wrapper">
+                        <video id="shared-video-player" controls preload="auto" crossorigin="anonymous"></video>
+                        <div id="video-overlay" class="center-content">
+                            <p>Loading video...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="right-panel">
+                    <div class="user-list-panel">
+                        <h3>👥 Users (<span id="user-count">0</span>)</h3>
+                        <ul id="user-list"></ul>
+                        <h3>🎤 Voice Chat Status</h3>
+                        <div id="voice-status">Connecting...</div>
+                    </div>
+                    
+                    <div class="chat-panel">
+                        <h3>💬 Real-Time Chat</h3>
+                        <div id="chat-messages">
+                            </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chat-input" placeholder="Type a message...">
+                            <button id="send-chat-btn">Send</button>
+                        </div>
+                    </div>
+                </aside>
+            </main>
+        </section>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>
